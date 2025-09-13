@@ -8,7 +8,10 @@ import notesRoutes from "./routes/notes.js";
 const app = express();
 const PORT = process.env.PORT || "3023";
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:5173", "https://your-frontend.vercel.app"],
+  credentials: true
+}));
 
 mongoose
   .connect(process.env.MONGO_DB_URL)
