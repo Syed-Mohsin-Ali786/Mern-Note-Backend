@@ -7,10 +7,14 @@ import authRoutes from "./routes/auth.js";
 import notesRoutes from "./routes/notes.js";
 const app = express();
 const PORT = process.env.PORT || "3023";
+const url=process.env.FRONTEND_URL;
 app.use(cors({
-  origin: ["http://localhost:5173", "https://your-frontend.vercel.app"],
+  origin: ["http://localhost:5173",url],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
+
 app.use(express.json());
 
 mongoose
